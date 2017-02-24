@@ -27,5 +27,7 @@
   <ItemGroup>
     <None Include="car_data_testset.csv" />
     <None Include="car_data_trainset.csv" />
+    <None Include="bupa_data_testset.csv" />
+    <None Include="bupa_data_trainset.csv" />
   </ItemGroup>
 </Project>

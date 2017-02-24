@@ -34,12 +34,42 @@ public:
 	vector<string> attributes;
 };
 
-void readFrom(string test, string training, vector<datapoint> testVect, vector<datapoint> trainingVect) {
+void readFrom(string test, string training, vector<datapoint> & testVect, vector<datapoint> & trainingVect);
+void store(string set, vector<datapoint> & vect);
+void outputSet(string type, string set, vector<datapoint> & vect);
+
+int main(){
+	cout << "hello k nearest neighbors" << endl;
+
+	vector<datapoint> testVect, trainingVect;
+	//read in training set and test set 
+	readFrom("bupa_data_testset.csv", "bupa_data_trainset.csv", testVect, trainingVect);
+
+	//prints out a summary of how many classes there are,
+	//how many instances of each class there are,
+	//and how many attributes there are.
+
+	system("pause");
+	return 0;
+}
+
+void readFrom(string test, string training, vector<datapoint> & testVect, vector<datapoint> & trainingVect) {
+	//store data points from set into corresponding vector
+	store(test, testVect);
+	store(training, trainingVect);
+
+	//output for debugging
+	outputSet("test", test, testVect);
+	outputSet("training", training, trainingVect);
+}
+
+//store data points from set into vector
+void store(string set, vector<datapoint> & vect) {
 	string line;
 	string token;
-	//store data points from test set into test vector
+
 	ifstream testFile;
-	testFile.open(test);
+	testFile.open(set);
 
 	if (testFile.is_open()) {
 		//read in each line of file
@@ -53,23 +83,27 @@ void readFrom(string test, string training, vector<datapoint> testVect, vector<d
 				d.attributes.push_back(token);
 			}
 			//store datapoint in testVest
-			testVect.push_back(d);
+			vect.push_back(d);
 		}
 	}
 	else {
 		cout << "file not found" << endl;
 	}
 	testFile.close();
-
-	//store data points from training set into training vector
-
 }
 
-int main(){
-	cout << "hello k nearest neighbors" << endl;
-	vector<datapoint> testVect, trainingVect;
-	//read in training set and test set 
-	readFrom("car_data_testset.csv", "car_data_trainset.csv", testVect, trainingVect);
-	system("pause");
-	return 0;
+//output datapoints and attributes
+void outputSet(string type, string set, vector<datapoint> & vect) {
+	cout << type << " set file:" << set << endl;
+	vector<datapoint>::iterator it;
+
+	//visit each datapoint
+	for (it = vect.begin(); it != vect.end(); ++it) {
+		//print each attribute
+		for (vector<string>::iterator it2 = it->attributes.begin(); it2 != it->attributes.end(); ++it2) {
+			cout << *it2 << ' ';
+		}
+		cout << endl;
+	}
+	cout << endl;
 }

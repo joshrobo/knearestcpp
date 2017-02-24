@@ -9,6 +9,9 @@
 //#include "readTestAndTrainingSet.h"
 //file code
 
+//for parsing csv
+#include <sstream>
+
 //classification code
 //#include "k_nearest_neighbors.h"
 //include knn algorithm file

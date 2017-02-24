@@ -26,8 +26,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="car_data_testset.csv" />
-    <None Include="car_data_trainset.csv">
-      <Filter>Source Files</Filter>
-    </None>
+    <None Include="car_data_trainset.csv" />
   </ItemGroup>
 </Project>

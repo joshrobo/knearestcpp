@@ -15,7 +15,7 @@ The programs output a report for each dataset to a text file:
 -the name if the training set input file
 -the name of the test set input file
 -the name of the similarity measure used
--the overall accuraccy of your decision tree (what percentage of the points of each class were classified correctly)
+-the overall accuracy of your decision tree (what percentage of the points of each class were classified correctly)
 -the precision and recall of each class
 -a confucion matrix of how often each class was predicted as belonging to every class
 
@@ -52,18 +52,26 @@ void countClassInstances(datasetinfo & dsinfo, int attribute_index, int &class_i
 void outputDataSetInfo(datasetinfo & dsinfo);
 void outputSet(string type, string set, vector<datapoint> & vect);
 
-void knearestneigbors(int k, vector<datapoint> & trainingVect, double(*dist)(vector<attribute>, vector<attribute>));
-
+template <class T>
+void knearestneigbors(int k, vector<datapoint> & trainingVect, vector<datapoint> & testVect, double(*dist)(vector<T>, vector<T>, datasetinfo), datasetinfo);
+double euclidean(vector<string> p, vector<string> q, datasetinfo);
+double euclidean2(vector<double> p, vector<double> q);
 
 int main(){
 	cout << "hello k nearest neighbors" << endl;
+	vector<double> a = { 48,32,22,14,4,2 };
+	vector<double> b = { 44,18,18,23,2,2 };
+	cout << euclidean2(a, b);
+	system("pause");
 
 	vector<datapoint> testVect, trainingVect;
 	datasetinfo bupa_data_info;
-	bupa_data_info.classes = {6};
+	bupa_data_info.classes = {0};
 	//read in training set and test set 
 	readFrom("bupa_data_testset.csv", "bupa_data_trainset.csv", testVect, trainingVect, bupa_data_info);
 
+
+	knearestneigbors(3,trainingVect, testVect, euclidean, bupa_data_info);
 
 	system("pause");
 	return 0;
@@ -175,16 +183,16 @@ void outputDataSetInfo(datasetinfo & dsinfo) {
 		//for each instance of class, output count of instance
 		for (mapITER = (*listITER)->begin(); mapITER != (*listITER)->end(); mapITER++)
 		{
-			cout << mapITER->first << ':'<< mapITER->second <<endl;
+			cout << mapITER->first << ": " << mapITER->second <<endl;
 		}
 		i++;
 	}
-	cout << "Number of attributes: " << dsinfo.attributes << endl << endl;
+	cout << "Number of non-class attributes: " << dsinfo.attributes - dsinfo.classes.size() << endl << endl;
 }
 
 //output datapoints and attributes
 void outputSet(string type, string set, vector<datapoint> & vect) {
-	cout << type << " set file:" << set << endl;
+	cout << type << " set file: " << set << endl;
 	vector<datapoint>::iterator it;
 
 	//visit each datapoint
@@ -198,11 +206,62 @@ void outputSet(string type, string set, vector<datapoint> & vect) {
 	cout << endl;
 }
 
-void knearestneigbors(int k, vector<datapoint> & trainingVect, double (*dist)(vector<attribute>, vector<attribute>)) {
+template <class T>
+void knearestneigbors(int k, vector<datapoint> & trainingVect, vector<datapoint> & testVect, double (*dist)(vector<T>, vector<T>, datasetinfo), datasetinfo dsinfo) {
 	//1. Let k equal the nearest neighbors and D be the set of training examples
-	//2. for each test example z = (x',y') do
-	//		3. Compute d(x',x), the distance between z and every example (x,y) within D
-	//		4. Select Dz subset or equal to D, the set of k closest training examples to z.
-	//		5. y' = argmax(v) (sum of (xi, yi) within dz) I(v = yi)
 
+	//2. for each test example z = (x',y') do
+	for (int i = 0; i <= testVect.size()-1; i++) {
+		//		3. Compute d(x',x), the distance between z and every example (x,y) within D
+
+		for (int j = 0; j <= trainingVect.size() - 1; j++) {
+			cout << dist(testVect.at(i).attributes, trainingVect.at(j).attributes, dsinfo) << endl;
+		}
+		cout << endl;
+		//		4. Select Dz subset or equal to D, the set of k closest training examples to z.
+		//		5. y' = argmax(v) (sum of (xi, yi) within dz) I(v = yi)
+	}
+}
+
+// Euclidean Distance
+double euclidean(vector<string> p, vector<string> q, datasetinfo dsinfo) {
+	int k;
+	double returnVal = 0;
+	std::set<int>::iterator setIT;
+
+	// the summation part in the slides
+	for (k = 0; k <= p.size() - 1; k++) {
+		for (setIT = dsinfo.classes.begin(); setIT != dsinfo.classes.end(); setIT++) {
+			//if class attribute skip
+			if (k == *setIT) {}
+			//else non class, calc
+			else {
+				double diff = atof(p[k].c_str()) - atof(q[k].c_str());
+				returnVal += pow(diff, 2.0);
+			}
+		}
+	}
+
+	// take the square root of the end result from the summation and return that value
+	returnVal = sqrt(returnVal);
+	//cout << "Euclidean Distance = " << returnVal << endl;
+	return returnVal;
+}
+
+// Euclidean Distance
+double euclidean2(vector<double> p, vector<double> q) {
+	int k;
+	double returnVal = 0;
+	std::set<int>::iterator setIT;
+
+	// the summation part in the slides
+	for (k = 0; k <= p.size() - 1; k++) {
+				double diff = p[k]- q[k];
+				returnVal += pow(diff, 2.0);
+	}
+
+	// take the square root of the end result from the summation and return that value
+	returnVal = sqrt(returnVal);
+	//cout << "Euclidean Distance = " << returnVal << endl;
+	return returnVal;
 }

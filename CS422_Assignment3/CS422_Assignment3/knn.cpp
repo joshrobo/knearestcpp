@@ -33,28 +33,30 @@ union attribute {
 
 class datapoint {
 public:
+	string Class;
 	vector<string> attributes;
+	
 };
 
 class datasetinfo {
 public:
-	//indexes of what attributes are classes
-	set<int> classes;
+	//index of what attributes are classes
+	int class_index;
 	//count of attributes
 	int attributes;
 	//map to count of different instances of classes
-	vector<map<string, int>*> class_instances;
+	map<string, int> class_instances;
 };
 
 void readFrom(string test, string training, vector<datapoint> & testVect, vector<datapoint> & trainingVect, datasetinfo & dsinfo);
 void store(string set, vector<datapoint> & vect, datasetinfo & dsinfo);
-void countClassInstances(datasetinfo & dsinfo, int attribute_index, int &class_index, string token);
+void countClassInstances(datapoint & d, datasetinfo & dsinfo, int attribute_index, string token);
 void outputDataSetInfo(datasetinfo & dsinfo);
 void outputSet(string type, string set, vector<datapoint> & vect);
 
 template <class T>
-void knearestneigbors(int k, vector<datapoint> & trainingVect, vector<datapoint> & testVect, double(*dist)(vector<T>, vector<T>, datasetinfo), datasetinfo);
-double euclidean(vector<string> p, vector<string> q, datasetinfo);
+void knearestneigbors(int k, vector<datapoint> & trainingVect, vector<datapoint> & testVect, double(*dist)(vector<T>, vector<T>), datasetinfo);
+double euclidean(vector<string> p, vector<string> q);
 double euclidean2(vector<double> p, vector<double> q);
 
 int main(){
@@ -66,7 +68,7 @@ int main(){
 
 	vector<datapoint> testVect, trainingVect;
 	datasetinfo bupa_data_info;
-	bupa_data_info.classes = {0};
+	bupa_data_info.class_index = 6;
 	//read in training set and test set 
 	readFrom("bupa_data_testset.csv", "bupa_data_trainset.csv", testVect, trainingVect, bupa_data_info);
 
@@ -80,10 +82,10 @@ int main(){
 void readFrom(string test, string training, vector<datapoint> & testVect, vector<datapoint> & trainingVect, datasetinfo & dsinfo) {
 	
 	//initialize class instance tracker
-	for (int i = 0; i < dsinfo.classes.size(); ++i) {
+	/*for (int i = 0; i < dsinfo.classes.size(); ++i) {
 		map<string, int> * d = new map<string, int>;
 		dsinfo.class_instances.push_back(d);
-	}
+	}*/
 
 	//store data points from set into corresponding vector
 	store(test, testVect, dsinfo);
@@ -114,7 +116,7 @@ void store(string set, vector<datapoint> & vect, datasetinfo & dsinfo) {
 			istringstream ss(line);
 			datapoint d;
 			int attribute_index = 0;
-			int class_index = 0;
+			//int class_index = 0;
 			//split line on delimiter ','
 			while (getline(ss, token, ',')) {
 				//cout << token << '\n';
@@ -122,7 +124,7 @@ void store(string set, vector<datapoint> & vect, datasetinfo & dsinfo) {
 				d.attributes.push_back(token);
 				//cout << "c_i" << class_index << endl;
 				//if attribute is class, record and count instances
-				countClassInstances(dsinfo, attribute_index, class_index, token);
+				countClassInstances(d, dsinfo, attribute_index, token);
 				attribute_index++;
 
 				//track number of attributes
@@ -140,54 +142,36 @@ void store(string set, vector<datapoint> & vect, datasetinfo & dsinfo) {
 	testFile.close();
 }
 
-void countClassInstances(datasetinfo & dsinfo, int attribute_index, int & class_index, string token) {
-	std::set<int>::iterator setIT;
-	for (setIT = dsinfo.classes.begin(); setIT != dsinfo.classes.end(); setIT++) {
-		if (attribute_index == *setIT) {
-			//cout << "a_i: " << attribute_index << endl;
-			//attribute is a class
-			//if class not added to class list, add to class list
-
-			//map<string, int> * d = new map<string, int>;
-			//dsinfo.class_instances.push_back(d);
-
-			//cout << "c_i: " << class_index << endl;
-			std::map<string, int>::iterator IT = dsinfo.class_instances.at(class_index)->find(token);
-			if (IT == dsinfo.class_instances.at(class_index)->end())
-			{
-				//add instance to map list with count equals 1
-				//cout << "adding new instance" << endl;
-				dsinfo.class_instances.at(class_index)->insert(std::pair<string, int>(token, 1));
-			}
-			else {
-				//increment count of instance
-				//cout << "increment instance" << endl;
-				IT->second += 1;
-			}
-			class_index++;
+void countClassInstances(datapoint & d, datasetinfo & dsinfo, int attribute_index, string token) {
+	if (attribute_index == dsinfo.class_index) {
+		std::map<string, int>::iterator IT = dsinfo.class_instances.find(token);
+		if (IT == dsinfo.class_instances.end())
+		{
+			//add instance to map list with count equals 1
+			//cout << "adding new instance" << endl;
+			dsinfo.class_instances.insert(std::pair<string, int>(token, 1));
 		}
+		else {
+			//increment count of instance
+			//cout << "increment instance" << endl;
+			IT->second += 1;
+		}
+		d.Class = token;
 	}
 }
 
 //output summary of how many classes there are, how many instances of each class there are, and how many attributes there are.
 void outputDataSetInfo(datasetinfo & dsinfo) {
-	vector<map<string, int>*>::iterator listITER;
 	map<string, int>::iterator mapITER;
-	int i = 1;
 
-	cout << "Number of classes: " << dsinfo.classes.size() << endl;
+	cout << "Number of classes: " << dsinfo.class_instances.size() << endl;
 	cout << "Instances of each class: " << endl;
-	//for each class
-	for (listITER = dsinfo.class_instances.begin(); listITER != dsinfo.class_instances.end(); listITER++) {
-		cout << "Class #" << i << endl;
-		//for each instance of class, output count of instance
-		for (mapITER = (*listITER)->begin(); mapITER != (*listITER)->end(); mapITER++)
-		{
-			cout << mapITER->first << ": " << mapITER->second <<endl;
-		}
-		i++;
+	//for each instance of class, output count of instance
+	for (mapITER = dsinfo.class_instances.begin(); mapITER != dsinfo.class_instances.end(); mapITER++)
+	{
+		cout << mapITER->first << ": " << mapITER->second <<endl;
 	}
-	cout << "Number of non-class attributes: " << dsinfo.attributes - dsinfo.classes.size() << endl << endl;
+	cout << "Number of non-class attributes: " << dsinfo.attributes - 1 << endl << endl;
 }
 
 //output datapoints and attributes
@@ -207,39 +191,52 @@ void outputSet(string type, string set, vector<datapoint> & vect) {
 }
 
 template <class T>
-void knearestneigbors(int k, vector<datapoint> & trainingVect, vector<datapoint> & testVect, double (*dist)(vector<T>, vector<T>, datasetinfo), datasetinfo dsinfo) {
+void knearestneigbors(int k, vector<datapoint> & trainingVect, vector<datapoint> & testVect, double (*dist)(vector<T>, vector<T>), datasetinfo dsinfo) {
 	//1. Let k equal the nearest neighbors and D be the set of training examples
 
 	//2. for each test example z = (x',y') do
 	for (int i = 0; i <= testVect.size()-1; i++) {
 		//		3. Compute d(x',x), the distance between z and every example (x,y) within D
-
+		multimap<double, string> knearest;
 		for (int j = 0; j <= trainingVect.size() - 1; j++) {
-			cout << dist(testVect.at(i).attributes, trainingVect.at(j).attributes, dsinfo) << endl;
+			//comupte similarity distance
+			double simdist = dist(testVect.at(i).attributes, trainingVect.at(j).attributes);
+			//		4. Select Dz subset or equal to D, the set of k closest training examples to z.
+			knearest.emplace(simdist, trainingVect.at(j).attributes.at(dsinfo.class_index));
+			if (knearest.size() > k) {
+				//map is sorted smallest to largest so delete element at end
+				knearest.erase(--knearest.end());
+			}
 		}
+		//output knearest
+		cout << "test emaple class = " << testVect.at(i).attributes.at(dsinfo.class_index) << endl;
+		cout << k << " nearest neighbors: " << endl;
+		for (map<double, string>::iterator mapITER = knearest.begin(); mapITER != knearest.end(); mapITER++)
+		{
+			cout << mapITER->first << ": " << mapITER->second << endl;
+			
+		}
+		//get majority
+		//compare knearest classes to actual
+
+		//store results
+		system("pause");
 		cout << endl;
-		//		4. Select Dz subset or equal to D, the set of k closest training examples to z.
+		
 		//		5. y' = argmax(v) (sum of (xi, yi) within dz) I(v = yi)
 	}
 }
 
 // Euclidean Distance
-double euclidean(vector<string> p, vector<string> q, datasetinfo dsinfo) {
+double euclidean(vector<string> p, vector<string> q) {
 	int k;
 	double returnVal = 0;
 	std::set<int>::iterator setIT;
 
-	// the summation part in the slides
-	for (k = 0; k <= p.size() - 1; k++) {
-		for (setIT = dsinfo.classes.begin(); setIT != dsinfo.classes.end(); setIT++) {
-			//if class attribute skip
-			if (k == *setIT) {}
-			//else non class, calc
-			else {
-				double diff = atof(p[k].c_str()) - atof(q[k].c_str());
-				returnVal += pow(diff, 2.0);
-			}
-		}
+	//summation: all attibutes excluding last one (class)
+	for (k = 0; k <= p.size() - 2; k++) {
+		double diff = atof(p[k].c_str()) - atof(q[k].c_str());
+		returnVal += pow(diff, 2.0);
 	}
 
 	// take the square root of the end result from the summation and return that value

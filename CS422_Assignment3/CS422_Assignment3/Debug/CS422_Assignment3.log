@@ -1,14 +1,14 @@
 ﻿  knn.cpp
 c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(32): warning C4624: 'attribute': destructor was implicitly defined as deleted
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(83): warning C4018: '<': signed/unsigned mismatch
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(233): warning C4018: '<=': signed/unsigned mismatch
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(258): warning C4018: '<=': signed/unsigned mismatch
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(214): warning C4018: '<=': signed/unsigned mismatch
-  c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(74): note: see reference to function template instantiation 'void knearestneigbors<std::string>(int,std::vector<datapoint,std::allocator<_Ty>> &,std::vector<_Ty,std::allocator<_Ty>> &,double (__cdecl *)(std::vector<std::string,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,std::vector<std::string,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,datasetinfo),datasetinfo)' being compiled
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(236): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(254): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(198): warning C4018: '<=': signed/unsigned mismatch
+  c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(76): note: see reference to function template instantiation 'void knearestneigbors<std::string>(int,std::vector<datapoint,std::allocator<_Ty>> &,std::vector<_Ty,std::allocator<_Ty>> &,double (__cdecl *)(std::vector<std::string,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,std::vector<std::string,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>),datasetinfo)' being compiled
           with
           [
               _Ty=datapoint
           ]
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(217): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(201): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(206): warning C4018: '>': signed/unsigned mismatch
   CS422_Assignment3.vcxproj -> C:\Users\Josh Robinson\Desktop\knearestcpp\CS422_Assignment3\Debug\CS422_Assignment3.exe
   CS422_Assignment3.vcxproj -> C:\Users\Josh Robinson\Desktop\knearestcpp\CS422_Assignment3\Debug\CS422_Assignment3.pdb (Partial PDB)

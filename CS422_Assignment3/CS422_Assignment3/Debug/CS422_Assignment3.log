@@ -1,14 +1,38 @@
 ﻿  knn.cpp
 c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(32): warning C4624: 'attribute': destructor was implicitly defined as deleted
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(236): warning C4018: '<=': signed/unsigned mismatch
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(254): warning C4018: '<=': signed/unsigned mismatch
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(198): warning C4018: '<=': signed/unsigned mismatch
-  c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(76): note: see reference to function template instantiation 'void knearestneigbors<std::string>(int,std::vector<datapoint,std::allocator<_Ty>> &,std::vector<_Ty,std::allocator<_Ty>> &,double (__cdecl *)(std::vector<std::string,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,std::vector<std::string,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>),datasetinfo)' being compiled
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(293): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(295): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(312): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(314): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(287): warning C4101: 'individual_accuracy': unreferenced local variable
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(338): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(355): warning C4018: '<': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(360): warning C4018: '<': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(366): warning C4018: '<': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(394): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(396): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(227): warning C4018: '<=': signed/unsigned mismatch
+  c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(91): note: see reference to function template instantiation 'void knearestneigbors<std::string>(int,std::vector<datapoint,std::allocator<_Ty>> &,std::vector<_Ty,std::allocator<_Ty>> &,double (__cdecl *)(std::vector<std::string,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,std::vector<std::string,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>),datasetinfo)' being compiled
           with
           [
               _Ty=datapoint
           ]
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(201): warning C4018: '<=': signed/unsigned mismatch
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(206): warning C4018: '>': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(230): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(235): warning C4018: '>': signed/unsigned mismatch
+c:\program files (x86)\microsoft visual studio 14.0\vc\include\utility(172): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(449): note: see reference to function template instantiation 'std::pair<std::string,int>::pair<_Ty2&,double&,void,0>(_Other1,_Other2) noexcept(false)' being compiled
+          with
+          [
+              _Ty2=std::string,
+              _Other1=std::string &,
+              _Other2=double &
+          ]
+  c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(449): note: see reference to function template instantiation 'std::pair<std::string,int>::pair<_Ty2&,double&,void,0>(_Other1,_Other2) noexcept(false)' being compiled
+          with
+          [
+              _Ty2=std::string,
+              _Other1=std::string &,
+              _Other2=double &
+          ]
   CS422_Assignment3.vcxproj -> C:\Users\Josh Robinson\Desktop\knearestcpp\CS422_Assignment3\Debug\CS422_Assignment3.exe
   CS422_Assignment3.vcxproj -> C:\Users\Josh Robinson\Desktop\knearestcpp\CS422_Assignment3\Debug\CS422_Assignment3.pdb (Partial PDB)

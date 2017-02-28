@@ -1,38 +1,34 @@
-﻿  knn.cpp
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(32): warning C4624: 'attribute': destructor was implicitly defined as deleted
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(380): warning C4018: '<=': signed/unsigned mismatch
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(382): warning C4018: '<=': signed/unsigned mismatch
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(400): warning C4018: '<=': signed/unsigned mismatch
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(402): warning C4018: '<=': signed/unsigned mismatch
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(374): warning C4101: 'individual_accuracy': unreferenced local variable
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(426): warning C4018: '<=': signed/unsigned mismatch
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(443): warning C4018: '<': signed/unsigned mismatch
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(448): warning C4018: '<': signed/unsigned mismatch
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(454): warning C4018: '<': signed/unsigned mismatch
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(482): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(484): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(314): warning C4018: '<=': signed/unsigned mismatch
-  c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(146): note: see reference to function template instantiation 'void knearestneigbors<std::string>(int,std::vector<datapoint,std::allocator<_Ty>> &,std::vector<_Ty,std::allocator<_Ty>> &,double (__cdecl *)(std::vector<std::string,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>,std::vector<std::string,std::allocator<std::basic_string<char,std::char_traits<char>,std::allocator<char>>>>),datasetinfo)' being compiled
-          with
-          [
-              _Ty=datapoint
-          ]
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(317): warning C4018: '<=': signed/unsigned mismatch
-c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(322): warning C4018: '>': signed/unsigned mismatch
+﻿  knnClassifier.cpp
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knnclassifier.cpp(130): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knnclassifier.cpp(133): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knnclassifier.cpp(138): warning C4018: '>': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knnclassifier.cpp(196): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knnclassifier.cpp(198): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knnclassifier.cpp(216): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knnclassifier.cpp(218): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knnclassifier.cpp(190): warning C4101: 'individual_accuracy': unreferenced local variable
 c:\program files (x86)\microsoft visual studio 14.0\vc\include\utility(172): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(537): note: see reference to function template instantiation 'std::pair<std::string,int>::pair<_Ty2&,double&,void,0>(_Other1,_Other2) noexcept(false)' being compiled
+  c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knnclassifier.cpp(247): note: see reference to function template instantiation 'std::pair<std::string,int>::pair<_Ty2&,double&,void,0>(_Other1,_Other2) noexcept(false)' being compiled
           with
           [
               _Ty2=std::string,
               _Other1=std::string &,
               _Other2=double &
           ]
-  c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knn.cpp(537): note: see reference to function template instantiation 'std::pair<std::string,int>::pair<_Ty2&,double&,void,0>(_Other1,_Other2) noexcept(false)' being compiled
+  c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knnclassifier.cpp(247): note: see reference to function template instantiation 'std::pair<std::string,int>::pair<_Ty2&,double&,void,0>(_Other1,_Other2) noexcept(false)' being compiled
           with
           [
               _Ty2=std::string,
               _Other1=std::string &,
               _Other2=double &
           ]
+  distanceMeasures.cpp
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\distancemeasures.cpp(12): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\distancemeasures.cpp(29): warning C4018: '<': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\distancemeasures.cpp(34): warning C4018: '<': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\distancemeasures.cpp(40): warning C4018: '<': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\distancemeasures.cpp(68): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\distancemeasures.cpp(70): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
   CS422_Assignment3.vcxproj -> C:\Users\Josh Robinson\Desktop\knearestcpp\CS422_Assignment3\Debug\CS422_Assignment3.exe
   CS422_Assignment3.vcxproj -> C:\Users\Josh Robinson\Desktop\knearestcpp\CS422_Assignment3\Debug\CS422_Assignment3.pdb (Partial PDB)

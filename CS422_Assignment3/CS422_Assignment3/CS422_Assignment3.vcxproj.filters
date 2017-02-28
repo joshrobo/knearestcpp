@@ -18,10 +18,22 @@
     <ClCompile Include="knn.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="distanceMeasures.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="knnClassifier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="distanceMeasures.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="knnClassifier.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

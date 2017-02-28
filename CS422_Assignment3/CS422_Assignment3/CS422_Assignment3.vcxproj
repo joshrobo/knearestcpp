@@ -110,10 +110,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="distanceMeasures.cpp" />
     <ClCompile Include="knn.cpp" />
+    <ClCompile Include="knnClassifier.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="distanceMeasures.h" />
     <ClInclude Include="header.h" />
+    <ClInclude Include="knnClassifier.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bupa_data_testset.csv" />

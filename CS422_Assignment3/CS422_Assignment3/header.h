@@ -1,4 +1,3 @@
-#pragma once
 //console operations
 #include <iostream>
 #include <iomanip>
@@ -24,5 +23,7 @@
 //#include "pearson_correlation.h"
 //distance measure files
 
-
-
+using namespace std;
+#include "distanceMeasures.h"
+#include "knnClassifier.h"
+using namespace knn422;

@@ -80,6 +80,7 @@ int main(){
 	
 	system("pause");
 
+	// bupa data set
 	vector<datapoint> testVect, trainingVect;
 	datasetinfo bupa_data_info;
 	bupa_data_info.class_index = 6;
@@ -87,17 +88,28 @@ int main(){
 	//read in training set and test set 
 	readFrom("bupa_data_testset.csv", "bupa_data_trainset.csv", testVect, trainingVect, bupa_data_info);
 
-
+	// car data set
 	vector<datapoint> testVect2, trainingVect2;
 	datasetinfo car_data_info;
 	car_data_info.class_index = 6;
 	car_data_info.pos_class = 3;
 	//read in training set and test set 
 	readFrom("car_data_testset.csv", "car_data_trainset.csv", testVect2, trainingVect2, car_data_info);
+
+	// car2 data set
+	vector<datapoint> testVect3, trainingVect3;
+	datasetinfo car2_data_info;
+	car2_data_info.class_index = 6;
+	car2_data_info.pos_class = 3;
+	//read in training set and test set 
+	readFrom("car_data_testset2.csv", "car_data_trainset2.csv", testVect3, trainingVect3, car2_data_info);
 	
+
+	// process bupa data set files
 	//////////////////////////////////////////////////////////////////////////////////
 	////bupa euclidean 
 	//for (int k = 1; k <= 10; k+=3) {
+	//  cout << "\nWithout test and training sets switched" << endl;
 	//	cout << "bupa euclidean " << endl;
 	//	knearestneigbors(k, trainingVect, testVect, euclidean, bupa_data_info);
 	//	system("pause");
@@ -105,6 +117,7 @@ int main(){
 
 	////bupa cosine_similarity
 	//for (int k = 1; k <= 10; k += 3) {
+	//  cout << "\nWithout test and training sets switched" << endl;
 	//	cout << "bupa cos" << endl;
 	//	knearestneigbors(k, trainingVect, testVect, euclidean, bupa_data_info);
 	//	system("pause");
@@ -112,6 +125,7 @@ int main(){
 
 	////bupa correlation
 	//for (int k = 1; k <= 10; k += 3) {
+	//  cout << "\nWithout test and training sets switched" << endl;
 	//	cout << "bupa corr" << endl;
 	//	knearestneigbors(k, trainingVect, testVect, euclidean, bupa_data_info);
 	//	system("pause");
@@ -120,6 +134,7 @@ int main(){
 	////switch test training
 	////bupa euclidean 
 	//for (int k = 1; k <= 10; k += 3) {
+	//  cout << "\nWith test and training sets switched" << endl;
 	//	cout << "bupa eud" << endl;
 	//	knearestneigbors(k, testVect, trainingVect, euclidean, bupa_data_info);
 	//	system("pause");
@@ -127,6 +142,7 @@ int main(){
 
 	////bupa cosine_similarity
 	//for (int k = 1; k <= 10; k += 3) {
+	//  cout << "\nWith test and training sets switched" << endl;
 	//	cout << "bupa cos" << endl;
 	//	knearestneigbors(k, testVect, trainingVect, euclidean, bupa_data_info);
 	//	system("pause");
@@ -134,54 +150,120 @@ int main(){
 
 	////bupa correlation
 	//for (int k = 1; k <= 10; k += 3) {
+	//  cout << "\nWith test and training sets switched" << endl;
 	//	cout << "bupa corr" << endl;
 	//	knearestneigbors(k, testVect, trainingVect, euclidean, bupa_data_info);
 	//	system("pause");
 	//}
 	//////////////////////////////////////////////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////
-	//cars euclidean 
+
+
+	// process car data set files
+	//////////////////////////////////////////////////////////////////////////////////
+	////cars euclidean 
+	//for (int k = 1; k <= 10; k += 3) {
+	//  cout << "\nWithout test and training sets switched" << endl;
+	//	cout << "cars euclidean" << endl;
+	//	knearestneigbors(k, trainingVect2, testVect2, euclidean, car_data_info);
+	//	system("pause");
+	//}
+
+	////cars cosine_similarity
+	//for (int k = 1; k <= 10; k += 3) {
+	//  cout << "\nWithout test and training sets switched" << endl;
+	//	cout << "cars cosine_similarity" << endl;
+	//	knearestneigbors(k, trainingVect2, testVect2, euclidean, car_data_info);
+	//	system("pause");
+	//}
+
+	////cars correlation
+	//for (int k = 1; k <= 10; k += 3) {
+	//  cout << "\nWithout test and training sets switched" << endl;
+	//	cout << "cars correlation" << endl;
+	//	knearestneigbors(k, trainingVect2, testVect2, euclidean, car_data_info);
+	//	system("pause");
+	//}
+
+	////switch test training
+	////cars euclidean 
+	//for (int k = 1; k <= 10; k += 3) {
+	//  cout << "\nWith test and training sets switched" << endl;
+	//	cout << "cars euclidean " << endl;
+	//	knearestneigbors(k, testVect2, trainingVect2, euclidean, car_data_info);
+	//	system("pause");
+	//}
+
+	////cars cosine_similarity
+	//for (int k = 1; k <= 10; k += 3) {
+	//  cout << "\nWith test and training sets switched" << endl;
+	//	cout << "cars cosine_similarity" << endl;
+	//	knearestneigbors(k, testVect2, trainingVect2, euclidean, car_data_info);
+	//	system("pause");
+	//}
+
+	////cars correlation
+	//for (int k = 1; k <= 10; k += 3) {
+	//  cout << "\nWith test and training sets switched" << endl;
+	//	cout << "cars correlation" << endl;
+	//	knearestneigbors(k, testVect2, trainingVect2, euclidean, car_data_info);
+	//	system("pause");
+	//}
+	////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////
+
+
+	// process car2 data set files
+	////////////////////////////////////////////////////////////////////////////////
+	//cars2 euclidean 
 	for (int k = 1; k <= 10; k += 3) {
-		cout << "cars euclidean" << endl;
-		knearestneigbors(k, trainingVect2, testVect2, euclidean, car_data_info);
+		cout << "\nWithout test and training sets switched" << endl;
+		cout << "cars2 euclidean" << endl;
+		knearestneigbors(k, trainingVect3, testVect3, euclidean, car_data_info);
 		system("pause");
 	}
 
-	//cars cosine_similarity
+	//cars2 cosine_similarity
 	for (int k = 1; k <= 10; k += 3) {
-		cout << "cars cosine_similarity" << endl;
-		knearestneigbors(k, trainingVect2, testVect2, euclidean, car_data_info);
+		cout << "\nWithout test and training sets switched" << endl;
+		cout << "cars2 cosine_similarity" << endl;
+		knearestneigbors(k, trainingVect3, testVect3, euclidean, car_data_info);
 		system("pause");
 	}
 
-	//cars correlation
+	//cars2 correlation
 	for (int k = 1; k <= 10; k += 3) {
-		cout << "cars correlation" << endl;
-		knearestneigbors(k, trainingVect2, testVect2, euclidean, car_data_info);
+		cout << "\nWithout test and training sets switched" << endl;
+		cout << "cars2 correlation" << endl;
+		knearestneigbors(k, trainingVect3, testVect3, euclidean, car_data_info);
 		system("pause");
 	}
 
 	//switch test training
-	//cars euclidean 
+	//cars2 euclidean 
 	for (int k = 1; k <= 10; k += 3) {
-		cout << "cars euclidean " << endl;
-		knearestneigbors(k, testVect2, trainingVect2, euclidean, car_data_info);
+		cout << "\nWith test and training sets switched" << endl;
+		cout << "cars2 euclidean " << endl;
+		knearestneigbors(k, testVect3, trainingVect3, euclidean, car_data_info);
 		system("pause");
 	}
 
-	//cars cosine_similarity
+	//cars2 cosine_similarity
 	for (int k = 1; k <= 10; k += 3) {
-		cout << "cars cosine_similarity" << endl;
-		knearestneigbors(k, testVect2, trainingVect2, euclidean, car_data_info);
+		cout << "\nWith test and training sets switched" << endl;
+		cout << "cars2 cosine_similarity" << endl;
+		knearestneigbors(k, testVect3, trainingVect3, euclidean, car_data_info);
 		system("pause");
 	}
 
-	//cars correlation
+	//cars2 correlation
 	for (int k = 1; k <= 10; k += 3) {
-		cout << "cars correlation" << endl;
-		knearestneigbors(k, testVect2, trainingVect2, euclidean, car_data_info);
+		cout << "\nWith test and training sets switched" << endl;
+		cout << "cars2 correlation" << endl;
+		knearestneigbors(k, testVect3, trainingVect3, euclidean, car_data_info);
 		system("pause");
 	}
+	////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////
 	system("pause");
 	return 0;

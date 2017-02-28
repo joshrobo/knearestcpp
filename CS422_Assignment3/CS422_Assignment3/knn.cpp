@@ -66,7 +66,6 @@ double covarianceXY(vector<string> x, vector<string> y, double meanX, double mea
 double standardDeviation(double variance);
 double variance(vector<string>data, double mean);
 double arithmeticMean(vector<string>data);
-
 string distanceWeightedVoting(multimap<double, string> kn, datasetinfo dsinfo);
 void confusion(vector < vector <int>> & matrix, string actual, string predicted);
 void outputConfusionMatrix(vector<vector<int>> & m, datasetinfo dsinfo);
@@ -88,20 +87,102 @@ int main(){
 	//read in training set and test set 
 	readFrom("bupa_data_testset.csv", "bupa_data_trainset.csv", testVect, trainingVect, bupa_data_info);
 
-	knearestneigbors(4,trainingVect, testVect, euclidean, bupa_data_info);
-	system("pause");
-	knearestneigbors(4, trainingVect, testVect, cosine_similarity, bupa_data_info);
-	system("pause");
 
 	vector<datapoint> testVect2, trainingVect2;
 	datasetinfo car_data_info;
 	car_data_info.class_index = 6;
 	car_data_info.pos_class = 3;
 	//read in training set and test set 
-	readFrom("car_data_testset.csv", "car_data_trainset.csv", testVect2, trainingVect2,car_data_info);
+	readFrom("car_data_testset.csv", "car_data_trainset.csv", testVect2, trainingVect2, car_data_info);
+	
+	//////////////////////////////////////////////////////////////////////////////////
+	////bupa euclidean 
+	//for (int k = 1; k <= 10; k+=3) {
+	//	cout << "bupa euclidean " << endl;
+	//	knearestneigbors(k, trainingVect, testVect, euclidean, bupa_data_info);
+	//	system("pause");
+	//}
 
-	knearestneigbors(4, trainingVect2, testVect2, euclidean, car_data_info);
+	////bupa cosine_similarity
+	//for (int k = 1; k <= 10; k += 3) {
+	//	cout << "bupa cos" << endl;
+	//	knearestneigbors(k, trainingVect, testVect, euclidean, bupa_data_info);
+	//	system("pause");
+	//}
 
+	////bupa correlation
+	//for (int k = 1; k <= 10; k += 3) {
+	//	cout << "bupa corr" << endl;
+	//	knearestneigbors(k, trainingVect, testVect, euclidean, bupa_data_info);
+	//	system("pause");
+	//}
+
+	////switch test training
+	////bupa euclidean 
+	//for (int k = 1; k <= 10; k += 3) {
+	//	cout << "bupa eud" << endl;
+	//	knearestneigbors(k, testVect, trainingVect, euclidean, bupa_data_info);
+	//	system("pause");
+	//}
+
+	////bupa cosine_similarity
+	//for (int k = 1; k <= 10; k += 3) {
+	//	cout << "bupa cos" << endl;
+	//	knearestneigbors(k, testVect, trainingVect, euclidean, bupa_data_info);
+	//	system("pause");
+	//}
+
+	////bupa correlation
+	//for (int k = 1; k <= 10; k += 3) {
+	//	cout << "bupa corr" << endl;
+	//	knearestneigbors(k, testVect, trainingVect, euclidean, bupa_data_info);
+	//	system("pause");
+	//}
+	//////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////
+	//cars euclidean 
+	for (int k = 1; k <= 10; k += 3) {
+		cout << "cars euclidean" << endl;
+		knearestneigbors(k, trainingVect2, testVect2, euclidean, car_data_info);
+		system("pause");
+	}
+
+	//cars cosine_similarity
+	for (int k = 1; k <= 10; k += 3) {
+		cout << "cars cosine_similarity" << endl;
+		knearestneigbors(k, trainingVect2, testVect2, euclidean, car_data_info);
+		system("pause");
+	}
+
+	//cars correlation
+	for (int k = 1; k <= 10; k += 3) {
+		cout << "cars correlation" << endl;
+		knearestneigbors(k, trainingVect2, testVect2, euclidean, car_data_info);
+		system("pause");
+	}
+
+	//switch test training
+	//cars euclidean 
+	for (int k = 1; k <= 10; k += 3) {
+		cout << "cars euclidean " << endl;
+		knearestneigbors(k, testVect2, trainingVect2, euclidean, car_data_info);
+		system("pause");
+	}
+
+	//cars cosine_similarity
+	for (int k = 1; k <= 10; k += 3) {
+		cout << "cars cosine_similarity" << endl;
+		knearestneigbors(k, testVect2, trainingVect2, euclidean, car_data_info);
+		system("pause");
+	}
+
+	//cars correlation
+	for (int k = 1; k <= 10; k += 3) {
+		cout << "cars correlation" << endl;
+		knearestneigbors(k, testVect2, trainingVect2, euclidean, car_data_info);
+		system("pause");
+	}
+	////////////////////////////////////////////////////////////////////////////////
 	system("pause");
 	return 0;
 }
@@ -118,11 +199,14 @@ void readFrom(string test, string training, vector<datapoint> & testVect, vector
 	store(test, testVect, dsinfo);
 	store(training, trainingVect, dsinfo);
 
-	outputDataSetInfo(dsinfo);
 
 	//output for debugging
+	cout << endl;
 	outputSet("test", test, testVect);
 	outputSet("training", training, trainingVect);
+
+
+	outputDataSetInfo(dsinfo);
 }
 
 //store data points from set into vector
@@ -134,8 +218,6 @@ void store(string set, vector<datapoint> & vect, datasetinfo & dsinfo) {
 
 	ifstream testFile;
 	testFile.open(set);
-
-
 
 	if (testFile.is_open()) {
 		//read in each line of file
@@ -207,18 +289,23 @@ void outputSet(string type, string set, vector<datapoint> & vect) {
 	vector<datapoint>::iterator it;
 
 	//visit each datapoint
-	for (it = vect.begin(); it != vect.end(); ++it) {
-		//print each attribute
-		for (vector<string>::iterator it2 = it->attributes.begin(); it2 != it->attributes.end(); ++it2) {
-			cout << *it2 << ' ';
-		}
-		cout << endl;
-	}
-	cout << endl;
+	//for (it = vect.begin(); it != vect.end(); ++it) {
+	//	//print each attribute
+	//	for (vector<string>::iterator it2 = it->attributes.begin(); it2 != it->attributes.end(); ++it2) {
+	//		cout << *it2 << ' ';
+	//	}
+	//	cout << endl;
+	//}
+	//cout << endl;
 }
 
 template <class T>
 void knearestneigbors(int k, vector<datapoint> & trainingVect, vector<datapoint> & testVect, double (*dist)(vector<T>, vector<T>), datasetinfo dsinfo) {
+	cout << "Computing k nearest neighbors..." << endl;
+	cout << "k = " << k << endl;
+	system("pause");
+	cout << endl;
+
 	int numClasses = dsinfo.class_instances.size();
 	//1. Let k equal the nearest neighbors and D be the set of training examples
 	vector<vector<int>> confusion_matrix(numClasses, vector<int>(numClasses, 0));
@@ -239,7 +326,7 @@ void knearestneigbors(int k, vector<datapoint> & trainingVect, vector<datapoint>
 			}
 		}
 		//output knearest
-		cout << "test example class = " << testVect.at(i).attributes.at(dsinfo.class_index) << endl;
+		//cout << "test example class = " << testVect.at(i).attributes.at(dsinfo.class_index) << endl;
 		//cout << k << " nearest neighbors: " << endl;
 		for (map<double, string>::iterator mapITER = knearest.begin(); mapITER != knearest.end(); mapITER++)
 		{
@@ -293,7 +380,7 @@ void outputConfusionMatrix(vector<vector<int>> & m, datasetinfo dsinfo) {
 	for (int i = 0; i <= m.size()-1; i++) {
 		//every predicted
 		for (int j = 0; j <= m.size()-1; j++) {
-			cout << m.at(i).at(j) << " ";
+			cout << left << setw(5) << m.at(i).at(j);
 			if (i == j) {
 				correct_pred += m.at(i).at(j);
 				if (i != dsinfo.pos_class) FN += m.at(dsinfo.pos_class).at(j); //sum of x col without diagonal
@@ -304,6 +391,7 @@ void outputConfusionMatrix(vector<vector<int>> & m, datasetinfo dsinfo) {
 		
 		cout << endl;
 	}
+	cout << endl;
 	overall_accuracy = correct_pred / total_pred;
 	cout << "Overall Accuracy = " << overall_accuracy << endl;
 	cout << "Individual Accuaracy" << endl;
@@ -370,7 +458,7 @@ double cosine_similarity(vector<string> d1, vector<string> d2) {
 
 	double cosSim = accumulatorDot / (accumulatorD1 * accumulatorD2);
 	//cout << "cosine similarity = " << cosSim << endl;
-	return cosSim;
+	return 1.0000-cosSim;
 }
 
 // Correlation 
@@ -386,7 +474,7 @@ double correlation(vector<string> x, vector<string> y) {
 	//	cout << "correlation = division by zero" << endl;
 	//else
 	//	cout << "correlation = " << corr << endl;
-	return corr;
+	return  1.0000-corr;
 }
 
 // Calculating the covariance for correlation

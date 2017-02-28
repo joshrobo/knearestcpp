@@ -1,6 +1,7 @@
 #pragma once
 //console operations
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <vector>
 #include <list>

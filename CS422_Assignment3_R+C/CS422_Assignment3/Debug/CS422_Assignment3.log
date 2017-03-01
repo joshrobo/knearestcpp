@@ -1,0 +1,28 @@
+﻿  knnClassifier.cpp
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knnclassifier.cpp(141): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knnclassifier.cpp(144): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knnclassifier.cpp(149): warning C4018: '>': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knnclassifier.cpp(207): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knnclassifier.cpp(209): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knnclassifier.cpp(227): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knnclassifier.cpp(229): warning C4018: '<=': signed/unsigned mismatch
+c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knnclassifier.cpp(201): warning C4101: 'individual_accuracy': unreferenced local variable
+c:\program files (x86)\microsoft visual studio 14.0\vc\include\utility(172): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knnclassifier.cpp(258): note: see reference to function template instantiation 'std::pair<std::string,int>::pair<_Ty2&,double&,void,0>(_Other1,_Other2) noexcept(false)' being compiled
+          with
+          [
+              _Ty2=std::string,
+              _Other1=std::string &,
+              _Other2=double &
+          ]
+  c:\users\josh robinson\desktop\knearestcpp\cs422_assignment3\cs422_assignment3\knnclassifier.cpp(258): note: see reference to function template instantiation 'std::pair<std::string,int>::pair<_Ty2&,double&,void,0>(_Other1,_Other2) noexcept(false)' being compiled
+          with
+          [
+              _Ty2=std::string,
+              _Other1=std::string &,
+              _Other2=double &
+          ]
+  knn.cpp
+  Generating Code...
+  CS422_Assignment3.vcxproj -> C:\Users\Josh Robinson\Desktop\knearestcpp\CS422_Assignment3\Debug\CS422_Assignment3.exe
+  CS422_Assignment3.vcxproj -> C:\Users\Josh Robinson\Desktop\knearestcpp\CS422_Assignment3\Debug\CS422_Assignment3.pdb (Partial PDB)
